@@ -1,21 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+//import * as React from 'react';
+import React, { } from 'react';
+
+import NavigationContainerStack from './app/routes';
+
+import {SQL, ContextProvider} from "./app/controllers/DatabaseController";
+
+
 
 export default function App() {
+
+  SQL.InitDatabase();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ContextProvider>
+      <NavigationContainerStack />
+    </ContextProvider> 
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
